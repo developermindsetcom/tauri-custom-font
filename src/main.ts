@@ -1,3 +1,4 @@
+import { Window } from '@tauri-apps/api/window'
 import { invoke } from "@tauri-apps/api/core";
 
 let greetInputEl: HTMLInputElement | null;
@@ -20,3 +21,14 @@ window.addEventListener("DOMContentLoaded", () => {
     greet();
   });
 });
+
+const mainWindow = Window.getByLabel('main')!;
+document
+  .getElementById('titlebar-minimize')!
+  .addEventListener('click', () => mainWindow.minimize())
+document
+  .getElementById('titlebar-maximize')!
+  .addEventListener('click', () => mainWindow.toggleMaximize())
+document
+  .getElementById('titlebar-close')!
+  .addEventListener('click', () => mainWindow.close())
