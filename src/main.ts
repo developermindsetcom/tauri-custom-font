@@ -1,4 +1,5 @@
-import { Window } from '@tauri-apps/api/window'
+import { getCurrent, Window } from '@tauri-apps/api/window';
+// import { getCurrent, Window } from "@tauri-apps/plugin-window";
 import { invoke } from "@tauri-apps/api/core";
 
 let greetInputEl: HTMLInputElement | null;
@@ -23,6 +24,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 const mainWindow = Window.getByLabel('main')!;
+// const mainWindow = getCurrent();
 document
   .getElementById('titlebar-minimize')!
   .addEventListener('click', () => mainWindow.minimize())
